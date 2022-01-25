@@ -1,0 +1,29 @@
+{
+  "name": "hw3",
+  "version": "1.0.0",
+  "description": "Assignment 3 for  IGME430",
+  "main": "C:\\Users\\ratze\\Desktop\\igme430\\streamingMediaHW\\src\\server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests Complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewRatzell/streaming-media-assignment.git"
+  },
+  "keywords": [
+    "epstein"
+  ],
+  "author": "Matthew Ratzell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatthewRatzell/streaming-media-assignment/issues"
+  },
+  "homepage": "https://github.com/MatthewRatzell/streaming-media-assignment#readme",
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4"
+  }
+}
