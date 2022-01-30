@@ -52,7 +52,7 @@ const createStream = (response, file) => {
   stream.on('error', (streamErr) => {
     response.end(streamErr);
   });
-  //return stream;
+  // return stream;
 };
 
 const getResource = (request, response, filePath, contentType) => {
@@ -82,62 +82,5 @@ const getResource = (request, response, filePath, contentType) => {
   globalStats = null;
 };
 
-/*
-const getResource = (request, response,filePath) => {
-  // creating our file object, does not load
-  const file = path.resolve(__dirname, `${filePath}`);
-  // function that checks the file and makes sure its good to go
-  fs.stat(file, (err, stats) => {
-    if (err) {
-      if (err.cose === 'ENOENT') {
-        response.writeHead(404);
-      }
-      return response.end(err);
-    }
 
-    // check to see if we  got a range header if not ignore
-    let { range } = request.headers;
-    if (!range) {
-      range = 'bytes=0';
-    }
-
-    // getting our byte range for the file so we dont load more than what we need
-    const positions = range.replace(/bytes=/, '').split('-');
-
-    let start = parseInt(positions[0], 10);
-
-    const total = stats.size;
-    // check if we sent end if not assume going all the way
-    const end = positions[1] ? parseInt(positions[1], 10) : total - 1;
-
-    if (start > end) {
-      start = end - 1;
-    }
-
-    // this will be how big of a chunk is being sent back in bytes
-    const chunksize = (end - start) + 1;
-
-    // if everything works we want to sent back the 206 error code
-    response.writeHead(206, {
-      // how much we are sending out of the total
-      'Content-Range': `bytes ${start}-${end}/${total}`,
-      // this is either bytes or none
-      'Accept-Ranges': 'bytes',
-      // how big the chunk is
-      'Content-Length': chunksize,
-      // its content type
-      'Content-Type': 'video/mp4',
-    });
-
-    const stream = fs.createReadStream(file, { start, end });
-    stream.on('open', () => {
-      stream.pipe(response);
-    });
-    stream.on('error', (streamErr) => {
-      response.end(streamErr);
-    });
-    return stream;
-  });
-};
-*/
 module.exports.getResource = getResource;
